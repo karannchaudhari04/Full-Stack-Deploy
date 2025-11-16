@@ -4,7 +4,16 @@ import cors from 'cors';
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin:['http://localhost:3000',
+            'http://localhost:5173',
+            'https://localhost:5174',
+            //'https://my-production-domain.com'
+    ],
+    credentials:true,
+  }
+));
 
 //API Routes
 app.get('/api/message', (req, res) => {
